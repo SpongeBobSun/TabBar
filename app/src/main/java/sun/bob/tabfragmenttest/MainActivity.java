@@ -3,10 +3,12 @@ package sun.bob.tabfragmenttest;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import sun.bob.tabfragment.OnTabClickedListener;
 import sun.bob.tabfragment.TabBar;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,5 +30,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+class OnClickedListener implements OnTabClickedListener{
 
+    @Override
+    public void onTabCliked(int index) {
+        MainActivity that = MainActivity.this;
+        FragmentManager fm = that.getSupportFragmentManager();
+    }
+}
 }

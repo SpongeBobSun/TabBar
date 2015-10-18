@@ -2,6 +2,8 @@ package sun.bob.tabfragment;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,23 +16,20 @@ public class TabView extends LinearLayout {
     private ImageView imageView;
     private TextView textView;
     private int iconImgId, highlightImgId;
-    private LinearLayout cell;
     public TabView(Context context) {
         super(context);
-        this.setOrientation(VERTICAL);
-        imageView = new ImageView(context);
-        textView = new TextView(context);
-        cell = new LinearLayout(context);
-        cell.setOrientation(VERTICAL);
+        init();
     }
 
     public TabView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
+    }
+
+    private void init(){
         this.setOrientation(VERTICAL);
-        imageView = new ImageView(context);
-        textView = new TextView(context);
-        cell = new LinearLayout(context);
-        cell.setOrientation(VERTICAL);
+        imageView = new ImageView(getContext());
+        textView = new TextView(getContext());
     }
 
     public TabView NewTabView(int iconImgId, int highlightImgId, String text){
@@ -38,17 +37,19 @@ public class TabView extends LinearLayout {
         this.highlightImgId = highlightImgId;
         textView.setText(text);
         imageView.setImageResource(iconImgId);
-        this.addView(cell);
-        this.cell.addView(imageView);
-        this.cell.addView(textView);
+        imageView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 4));
+        textView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
+        textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        this.addView(imageView);
+        this.addView(textView);
         return this;
     }
 
     public TabView change(){
         if (highlighted){
-            ((ImageView) ((LinearLayout) this.getChildAt(0)).getChildAt(0)).setImageResource(this.highlightImgId);
+            imageView.setImageResource(this.iconImgId);
         } else {
-            ((ImageView) ((LinearLayout) this.getChildAt(0)).getChildAt(0)).setImageResource(this.iconImgId);
+            imageView.setImageResource(this.highlightImgId);
         }
         this.invalidate();
         highlighted = !highlighted;
