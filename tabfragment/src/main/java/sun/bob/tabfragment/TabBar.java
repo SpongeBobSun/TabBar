@@ -1,6 +1,12 @@
 package sun.bob.tabfragment;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,19 +24,34 @@ public class TabBar extends LinearLayout {
     public TabBar(Context context) {
         super(context);
         setOrientation(LinearLayout.HORIZONTAL);
+        Background background = new Background();
+//        this.setPadding(0, 10, 0, 0);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
+            this.setBackgroundDrawable(background);
+        } else {
+            this.setBackground(background);
+        }
     }
 
     public TabBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(LinearLayout.HORIZONTAL);
+        this.setPadding(0, 10, 0, 0);
+        Background background = new Background();
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
+            this.setBackgroundDrawable(background);
+        } else {
+            this.setBackground(background);
+        }
+
     }
 
 
-    public TabBar addTab(int imgId, int highlightImgId, String text){
-        TabView tabView = new TabView(getContext()).NewTabView(imgId, highlightImgId, text);
+    public TabBar addTab(int imgId, int highlightImgId, String text, int fontColor, int highlightFontColor){
+        TabView tabView = new TabView(getContext()).NewTabView(imgId, highlightImgId, text, fontColor, highlightFontColor);
         count ++;
         final int index = count - 1;
-        tabView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
+        tabView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         this.addView(tabView);
         tabView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +66,39 @@ public class TabBar extends LinearLayout {
             }
         });
         if (index == 0){
-            // TODO: 15/10/18 First tab
             tabView.change();
         }
         return this;
+    }
+
+    class Background extends Drawable {
+
+        private Paint paint;
+        public Background(){
+            super();
+            paint = new Paint();
+            paint.setColor(Color.GRAY);
+        }
+
+        @Override
+        public void draw(Canvas canvas) {
+            canvas.drawLine(0, 0, canvas.getWidth(), 0, paint);
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+
+        }
+
+        @Override
+        public void setColorFilter(ColorFilter colorFilter) {
+
+        }
+
+        @Override
+        public int getOpacity() {
+            return 0;
+        }
     }
 
     public TabBar setOnTabClickedListener(OnTabClickedListener onTabClickedListener) {
