@@ -38,7 +38,6 @@ public class TabView extends LinearLayout {
         this.setOrientation(VERTICAL);
         imageView = new ImageView(getContext());
         textView = new TextView(getContext());
-        this.setPadding(0,0,0,0);
     }
 
     public TabView NewTabView(int iconImgId, int highlightImgId, String text, int fontColor, int highlightFontColor) {
@@ -49,10 +48,10 @@ public class TabView extends LinearLayout {
         textView.setText(text);
         textView.setTextColor(fontColor);
         imageView.setImageResource(iconImgId);
-        imageView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 4));
-        textView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
+        imageView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
+
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
-        textView.setPadding(0,0,0,0);
+
         this.addView(imageView);
         this.addView(textView);
         return this;

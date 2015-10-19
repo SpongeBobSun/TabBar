@@ -23,27 +23,24 @@ public class TabBar extends LinearLayout {
 
     public TabBar(Context context) {
         super(context);
-        setOrientation(LinearLayout.HORIZONTAL);
-        Background background = new Background();
-//        this.setPadding(0, 10, 0, 0);
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
-            this.setBackgroundDrawable(background);
-        } else {
-            this.setBackground(background);
-        }
+        init();
     }
 
     public TabBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
+
+    }
+
+    void init(){
         setOrientation(LinearLayout.HORIZONTAL);
-        this.setPadding(0, 10, 0, 0);
         Background background = new Background();
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
             this.setBackgroundDrawable(background);
         } else {
             this.setBackground(background);
         }
-
+        this.setPadding(0, 10, 0, 0);
     }
 
 
@@ -51,7 +48,8 @@ public class TabBar extends LinearLayout {
         TabView tabView = new TabView(getContext()).NewTabView(imgId, highlightImgId, text, fontColor, highlightFontColor);
         count ++;
         final int index = count - 1;
-        tabView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        LayoutParams layoutParams = new LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        tabView.setLayoutParams(layoutParams);
         this.addView(tabView);
         tabView.setOnClickListener(new View.OnClickListener() {
             @Override
