@@ -31,7 +31,7 @@ For example,
 
 		class OnClickedListener implements OnTabClickedListener{
 			@Override
-			 public void onTabCliked(int index) {
+			 public void onTabClicked(int index) {
 			 MainActivity that = MainActivity.this;
 			that.getSupportFragmentManager().beginTransaction().hide(currentFragment).show(fragments.get(index)).commit();
 			currentFragment = fragments.get(index);

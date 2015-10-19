@@ -58,7 +58,7 @@ public class TabBar extends LinearLayout {
                 that.lastIndex = index;
                 ((TabView) v).change();
                 if (that.onTabClickedListener != null) {
-                    that.onTabClickedListener.onTabCliked(index);
+                    that.onTabClickedListener.onTabClicked(index);
                 }
             }
         });
