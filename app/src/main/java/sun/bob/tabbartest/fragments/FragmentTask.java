@@ -1,4 +1,4 @@
-package sun.bob.tabfragmenttest.fragments;
+package sun.bob.tabbartest.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

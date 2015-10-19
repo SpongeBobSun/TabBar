@@ -1,4 +1,4 @@
-package sun.bob.tabfragment;
+package sun.bob.tabbar;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.view.Gravity;
 
 /**
  * Created by bob.sun on 15/10/16.

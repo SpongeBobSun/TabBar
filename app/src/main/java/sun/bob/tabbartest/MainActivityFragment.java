@@ -1,10 +1,12 @@
-package sun.bob.tabfragmenttest;
+package sun.bob.tabbartest;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import sun.bob.tabfragmenttest.R;
 
 /**
  * A placeholder fragment containing a simple view.

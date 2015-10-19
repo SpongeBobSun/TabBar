@@ -1,22 +1,19 @@
-package sun.bob.tabfragmenttest;
+package sun.bob.tabbartest;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import java.util.ArrayList;
 
-import sun.bob.tabfragment.OnTabClickedListener;
-import sun.bob.tabfragment.TabBar;
-import sun.bob.tabfragmenttest.fragments.FragmentCalendar;
-import sun.bob.tabfragmenttest.fragments.FragmentSetting;
-import sun.bob.tabfragmenttest.fragments.FragmentTask;
+import sun.bob.tabbartest.fragments.FragmentTask;
+import sun.bob.tabbar.OnTabClickedListener;
+import sun.bob.tabbar.TabBar;
+import sun.bob.tabfragmenttest.R;
+import sun.bob.tabbartest.fragments.FragmentCalendar;
+import sun.bob.tabbartest.fragments.FragmentSetting;
 
 
 public class MainActivity extends AppCompatActivity {
